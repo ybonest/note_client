@@ -1,0 +1,12 @@
+.sidebar {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  height: 100%;
+  :global {
+    .ant-menu {
+      padding-left: 0em;
+      height: 100%;
+    }
+  }
+}
