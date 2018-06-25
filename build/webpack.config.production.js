@@ -56,7 +56,7 @@ const config = {
     path: path.join(__dirname, '../dist'),
     filename: `[name]_[hash:8].js`,
     chunkFilename: `[name]_[chunkhash:8].js`,
-    publicPath: './'
+    publicPath: '/'
   },
   plugins: [
     ...happyPackPlugins,
@@ -75,31 +75,31 @@ const config = {
       filename: '[name]_[hash].css',
       chunkFilename: '[name]_[chunkhash:8].css'
     }),
-    new ParallelUglifyPlugin({  //压缩js
-      uglifyJS: {
-        output: {
-          comments: false
-        }
-      },
-      compress: {
-        warnings: false,
-        drop_console: true,
-        collapse_vars: true,
-        reduce_vars: true
-      }
-    }),
+    // new ParallelUglifyPlugin({  //压缩js
+    //   uglifyJS: {
+    //     output: {
+    //       comments: false
+    //     }
+    //   },
+    //   compress: {
+    //     warnings: false,
+    //     drop_console: true,
+    //     collapse_vars: true,
+    //     reduce_vars: true
+    //   }
+    // }),
   ],
-  optimization: {
-    splitChunks: {
-      cacheGroups: {
-        commons: {
-          name: "commons",
-          chunks: "initial",
-          minChunks: 2
-        }
-      }
-    }
-  },
+  // optimization: {
+  //   splitChunks: {
+  //     cacheGroups: {
+  //       commons: {
+  //         name: "commons",
+  //         chunks: "initial",
+  //         minChunks: 2
+  //       }
+  //     }
+  //   }
+  // },
   module: {
     rules
   },
