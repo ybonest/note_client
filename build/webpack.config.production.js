@@ -63,13 +63,13 @@ const config = {
     new HtmlPlugin({
       hash: false,
       template: './src/index.html',
-      filename: path.join(__dirname, `../dist/index.html`),
-      chunks: ['vendor', 'common_vendor'],  // 当entry有多个入口文件时，与entry对象的键对应，使对应的html文件只注入需要的js
-      minify: { // 指定 生成的 index.html 的压缩选项
-        collapseWhitespace: true,  // 合并空白字符
-        removeComments: true, // 把所有的注释删除掉
-        removeAttributeQuotes: true // 移除属性上的引号
-      }
+      // filename: path.join(__dirname, `../dist/index.html`),
+      // chunks: ['vendor', 'common_vendor'],  // 当entry有多个入口文件时，与entry对象的键对应，使对应的html文件只注入需要的js
+      // minify: { // 指定 生成的 index.html 的压缩选项
+      //   collapseWhitespace: true,  // 合并空白字符
+      //   removeComments: true, // 把所有的注释删除掉
+      //   removeAttributeQuotes: true // 移除属性上的引号
+      // }
     }),
     new MiniCssExtractPlugin({
       filename: '[name]_[hash].css',
