@@ -50,9 +50,7 @@ class LayoutComponent extends React.Component {
           <SideBar child={child} arg={arg}/>
           <Switch>
             <Route path='/submenu/:type' render={props => (
-              <SubMenuCom {...props}  child={child} arg={arg} >
-                
-              </SubMenuCom>
+              <SubMenuCom {...props}  child={child} arg={arg} />
             )}/>
           </Switch>
         </div>

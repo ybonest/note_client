@@ -9,6 +9,7 @@ export default class SideBar extends React.Component {
   }
   render(){
     const { child, arg } = this.props;
+    
     return (
     <div className='sidebar'>
       <Menu

@@ -27,7 +27,7 @@ export default class SubMenuCom extends React.Component {
     child = child && child.map(item => {
       if(history && history.location.pathname.includes(item.arg)){
         item.child && item.child.forEach(innerItem => {
-          if(history.location.pathname.includes(innerItem.arg)){
+          if(history.location.pathname.endsWith(innerItem.arg)){
             flag = true;
           };
         })
@@ -38,6 +38,8 @@ export default class SubMenuCom extends React.Component {
         return item;
       }
     })
+    
+    
     
     return (
       <div className='note-sub-menu' style={this.state.styles}>

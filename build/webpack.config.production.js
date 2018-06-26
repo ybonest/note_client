@@ -46,8 +46,11 @@ filePath.forEach((file) => {
 
 const config = {
   entry: {
-    vendor: [
+    react: [
       'react', 'react-dom', 'react-router-dom'
+    ],
+    prismjs: [
+      'prismjs'
     ],
     app: ['./src/main.js']
   },
@@ -63,43 +66,35 @@ const config = {
     new HtmlPlugin({
       hash: false,
       template: './src/index.html',
-      // filename: path.join(__dirname, `../dist/index.html`),
-      // chunks: ['vendor', 'common_vendor'],  // 当entry有多个入口文件时，与entry对象的键对应，使对应的html文件只注入需要的js
-      // minify: { // 指定 生成的 index.html 的压缩选项
-      //   collapseWhitespace: true,  // 合并空白字符
-      //   removeComments: true, // 把所有的注释删除掉
-      //   removeAttributeQuotes: true // 移除属性上的引号
-      // }
     }),
     new MiniCssExtractPlugin({
       filename: '[name]_[hash].css',
       chunkFilename: '[name]_[chunkhash:8].css'
     }),
-    // new ParallelUglifyPlugin({  //压缩js
-    //   uglifyJS: {
-    //     output: {
-    //       comments: false
-    //     }
-    //   },
-    //   compress: {
-    //     warnings: false,
-    //     drop_console: true,
-    //     collapse_vars: true,
-    //     reduce_vars: true
-    //   }
-    // }),
   ],
-  // optimization: {
-  //   splitChunks: {
-  //     cacheGroups: {
-  //       commons: {
-  //         name: "commons",
-  //         chunks: "initial",
-  //         minChunks: 2
-  //       }
-  //     }
-  //   }
-  // },
+
+  optimization: {
+    splitChunks: {
+      chunks: 'async',
+      minSize: 30000,
+      minChunks: 1,
+      maxAsyncRequests: 5,
+      maxInitialRequests: 3,
+      automaticNameDelimiter: '~',
+      name: true,
+      cacheGroups: {
+        vendors: {
+          test: /[\\/]node_modules[\\/]/,
+          priority: -10
+        },
+        default: {
+          minChunks: 2,
+          priority: -20,
+          reuseExistingChunk: true
+        }
+      }
+    }
+  },
   module: {
     rules
   },
