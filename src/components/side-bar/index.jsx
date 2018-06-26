@@ -13,7 +13,6 @@ export default class SideBar extends React.Component {
     <div className='sidebar'>
       <Menu
           defaultSelectedKeys={['1']}
-          defaultOpenKeys={['sub1']}
           mode="inline"
           theme="dark"
           inlineCollapsed={true}

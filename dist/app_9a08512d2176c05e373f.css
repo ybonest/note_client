@@ -4837,9 +4837,16 @@ pre[class*="language-"] {
 }
 
 .note-sub-menu {
-  position: absolute;
-  left: 80px;
-  top: 0px; }
+  display: flex;
+  margin-left: 80px;
+  position: relative; }
+  .note-sub-menu .ant-menu-root {
+    width: 200px !important;
+    position: fixed;
+    top: 0px;
+    padding-top: 50px;
+    padding-left: 0px;
+    height: 100%; }
 
 .sidebar {
   position: fixed;
@@ -4851,4 +4858,4 @@ pre[class*="language-"] {
     height: 100%; }
 
 
-/*# sourceMappingURL=app_958139b816c56a24b97c.css.map*/
+/*# sourceMappingURL=app_9a08512d2176c05e373f.css.map*/

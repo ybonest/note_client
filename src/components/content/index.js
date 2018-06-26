@@ -1,5 +1,5 @@
 import React from 'react';
-import { mdRequest, sideBarData } from 'services/index.js';
+import { mdRequest, sideBarData, cancel } from 'services/index.js';
 import 'github-markdown-css/github-markdown.css';
 import 'prismjs/themes/prism-tomorrow.css'
 import Prism from 'prismjs';
@@ -14,15 +14,17 @@ class ArticleContent extends React.Component {
   static contextTypes = {
     treeData: PropTypes.array
   }
+
   state = {
     data: null,
     tree: null
   }
+
   getData(props){
     const { params } = props.match;
     const that = this;
     mdRequest(params).then(function(response){
-      that.setState({
+      that._isMounted && that.setState({
         data: response.data.html,
         tree: response.data.tree
       })
@@ -30,10 +32,14 @@ class ArticleContent extends React.Component {
     })
   }
   componentDidMount(){
+    this._isMounted = true;  // 解决异步请求结果返回时，组件被卸载warning
     this.getData(this.props);
   }
   componentWillReceiveProps(nextProps){
     this.getData(nextProps);
+  }
+  componentWillUnmount(){
+    this._isMounted = false;
   }
   render(){
     return [

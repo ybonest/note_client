@@ -8,7 +8,8 @@ const server = new WebpackDevServer(compiler, {
   historyApiFallback: true,
   proxy: {
     "/api": "http://localhost:3000",
-    "/note": "http://localhost:3000"
+    "/note": "http://localhost:3000",
+    "/images": "http://localhost:3000"
   },
   publicPath: '/'
 });

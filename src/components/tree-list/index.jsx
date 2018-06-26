@@ -32,7 +32,7 @@ export default class TreeList extends React.Component {
     }
     return (
       <div className='content-tree'>
-        <Anchor offsetTop='50'>
+        <Anchor offsetTop={50}>
           {data.map(item => {
             return this.renderLinkItem(item);
           })}

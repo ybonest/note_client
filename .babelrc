@@ -1,0 +1,38 @@
+{
+  "env": {
+    "production": {
+      "plugins": [
+        
+        ["import", { "libraryName": "antd", "libraryDirectory": "es", "style": "css" }]
+      ],
+      "presets": [
+        "es2015",
+        "stage-1",
+        "react"
+      ]
+    },
+    "development": {
+      "plugins": [
+        "react-hot-loader/babel",
+        [
+          "transform-runtime",
+          {
+            "polyfill": false
+          }
+        ],
+        // ["prismjs", {
+        //   "languages": ["javascript", "css", "markup"],
+        //   "plugins": ["line-numbers"],
+        //   "theme": "twilight",
+        //   "css": true
+        // }],
+        ["import", { "libraryName": "antd", "libraryDirectory": "es", "style": "css" }]
+      ],
+      "presets": [
+        "es2015",
+        "stage-1",
+        "react"
+      ]
+    }
+  }
+}
