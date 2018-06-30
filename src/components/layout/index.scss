@@ -1,0 +1,26 @@
+:global(.ant-layout){
+  // background-image: url('../../assets/alt.jpg');
+  // background-repeat: no-repeat;
+  // background-attachment: fixed;
+}
+.header-star {
+  height: 100px;
+  text-align: center;
+  line-height: 100px;
+  font-size: 35px;
+}
+
+.page-layout {
+  display: flex;
+  margin: 0 200px;
+  .page-left {
+    font-family: 'Courier New', Courier, monospace;
+    flex: 1;
+  }
+  
+  .page-right {
+    font-family: 'Courier New', Courier, monospace;
+    // background-color: rebeccapurple;
+    width: 300px;
+  }
+}

@@ -73,7 +73,21 @@ const rulesPackFn = (happyThreadPool) => {
         }
       ],
       threadPool: happyThreadPool
-    }
+    },
+    // {
+    //   id: 'jquery',
+    //   test: require.resolve('jquery'),
+    //   loaders: [
+    //     {
+    //       loader: 'expose-loader',
+    //       options: 'jQuery'
+    //     },
+    //     {
+    //       loader:'expose-loader',
+    //       options:'$'
+    //     }
+    //   ]
+    // }
   ]
 }
 

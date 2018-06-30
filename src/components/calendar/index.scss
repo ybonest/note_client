@@ -1,0 +1,45 @@
+.calendar {
+  // width: 80%;
+  margin: 0 200px;
+  // margin:  0 auto;
+  :global(.ant-fullcalendar-table) {
+    height: 100%;
+  }
+  :global(.ant-fullcalendar-tbody) {
+    margin: 0 auto;
+  }
+  :global {
+    .events {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .ant-fullcalendar-cell {
+      width: 14.2%;
+    }
+    .events .ant-badge-status {
+      overflow: hidden;
+      white-space: nowrap;
+      width: 100%;
+      text-overflow: ellipsis;
+      font-size: 12px;
+    }
+    .notes-month {
+      text-align: center;
+      font-size: 28px;
+    }
+    .notes-month section {
+      font-size: 28px;
+    }
+    .ant-fullcalendar-month-panel-tbody {
+      width: 100%;
+      height: 100%;
+    }
+    .ant-fullcalendar-month-panel-table {
+      height: 100%;
+    }
+    .ant-fullcalendar-month-panel-cell {
+      width: 33.3%;
+    }
+  }
+}

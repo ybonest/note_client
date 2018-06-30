@@ -14,4 +14,8 @@ const sideBarData = () => {
   return axios.get('/api/sidebar')
 }
 
-export { mdRequest, sideBarData, cancel }
+const categoriesData = () => {
+  return axios.get('/api/categories')
+}
+
+export { mdRequest, sideBarData, categoriesData }

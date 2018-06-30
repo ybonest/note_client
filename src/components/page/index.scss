@@ -1,0 +1,29 @@
+.page {
+  background-image: url('../../assets/alt.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 100%;
+  font-size: 50px;
+  text-align: center;
+  line-height: 50vh;
+  // animation:  animationSize 0.7s infinite alternate-reverse;
+  // cursor: pointer;
+}
+.animate {
+  color: green!important;
+  text-decoration: none;
+  cursor: pointer;
+  animation:  animationSize 0.7s infinite alternate-reverse;
+  &:hover {
+    text-decoration: none!important;
+    animation-play-state: paused;
+  }
+}
+@keyframes animationSize {
+  from {
+    font-size: 50px;
+  }
+  to {
+    font-size: 60px;
+  }
+}

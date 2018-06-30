@@ -1,16 +1,18 @@
 import React from 'react';
 import 'antd/dist/antd.min.css';
 import 'styles/layout.scss'
-import { Layout, Menu, Breadcrumb, Icon, Avatar, Calendar } from 'antd';
-import { mdRequest, sideBarData } from 'services/index.js';
-import ArticleContent from '../content';
+import { Layout } from 'antd';
+import { sideBarData } from 'services/index.js';
 import { Link, Route, Switch, BrowserRouter as Router, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import SubMenuCom from 'components/subMenu';
+import GlobalHeader from 'components/global-header';
 import SideBar from 'components/side-bar';
-const { Header, Content, Footer, Sider } = Layout;
-
-// <Route path='/submenu/:arg/:arg1/:arg2' component={ArticleContent}/>              
+import Home from 'components/home';
+import Categories from 'components/categories';
+import PageRight from 'components/page-right';
+import CalendarDay from 'components/calendar';
+import './index.scss';
 
 class LayoutComponent extends React.Component {
   constructor(){
@@ -19,7 +21,8 @@ class LayoutComponent extends React.Component {
   state = {
     collapsed: false,
     left :200,
-    sideBarData: null
+    sideBarData: null,
+    rightShow: true,
   };
   static childContextTypes = {
     treeData: PropTypes.array
@@ -39,6 +42,7 @@ class LayoutComponent extends React.Component {
   }
   render(){
     let child = null, arg = null;
+    const { rightShow } = this.state;
     if(this.state.sideBarData){
       child = this.state.sideBarData.child;
       arg = this.state.sideBarData.arg;
@@ -47,12 +51,29 @@ class LayoutComponent extends React.Component {
       <Router>
       <Layout style={{ minHeight: '100vh' }}>
         <div>
-          <SideBar child={child} arg={arg}/>
-          <Switch>
-            <Route path='/submenu/:type' render={props => (
-              <SubMenuCom {...props}  child={child} arg={arg} />
-            )}/>
-          </Switch>
+          <GlobalHeader child={child} arg={arg}/>
+          {/*<SideBar child={child} arg={arg}/>*/}
+              <Route path='/categories/:type' render={props => (
+                <SubMenuCom {...props}  child={child} arg={arg} />
+              )}/>
+              <Route exact path='/:page' render={({location}) => {
+                if (location && location.pathname === '/calendar') {
+                  return <Route exact path='/calendar' component={CalendarDay}/>;
+                }
+                return (
+                  <div className='page-layout'>
+                    <div className='page-left'>
+                      <Switch>
+                        <Route path='/home' component={Home}/>
+                        <Route exact path='/categories' component={Categories}/>
+                      </Switch>
+                    </div>
+                    <div className='page-right'>
+                      <PageRight />
+                    </div>
+                  </div>
+                )
+              }} />
         </div>
       </Layout>
       </Router>

@@ -1,0 +1,11 @@
+.page-right {
+  :global(.ant-fullcalendar-column-header) {
+    padding: 5px 7px!important;
+  }
+  :global(.ant-fullcalendar-cell) {
+    padding: 5px 7px!important;
+  }
+  :global(.ant-fullcalendar) {
+    height: 260px;
+  }
+}

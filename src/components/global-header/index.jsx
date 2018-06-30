@@ -1,45 +1,62 @@
 import React from 'react';
-import { Menu, Icon } from 'antd';
-const SubMenu = Menu.SubMenu;
-const MenuItemGroup = Menu.ItemGroup;
+import { Menu } from 'antd';
+import { Link } from 'react-router-dom';
+import './index.scss';
+import ActiveLink from './ActiveLink.js';
+
 
 export default class GlobalHeader extends React.Component {
   state = {
-    current: 'mail',
+    current: 'home',
   }
   handleClick = (e) => {
-    console.log('click ', e);
     this.setState({
       current: e.key,
     });
   }
+  onSelectMenu = (key) => {
+    this.setState({
+      current: key,
+    });
+  }
   render() {
-    return (
-      <Menu
-        onClick={this.handleClick}
-        selectedKeys={[this.state.current]}
-        mode="horizontal"
-      >
-        <Menu.Item key="mail">
-          <Icon type="mail" />Navigation One
-        </Menu.Item>
-        <Menu.Item key="app" disabled>
-          <Icon type="appstore" />Navigation Two
-        </Menu.Item>
-        <SubMenu title={<span><Icon type="setting" />Navigation Three - Submenu</span>}>
-          <MenuItemGroup title="Item 1">
-            <Menu.Item key="setting:1">Option 1</Menu.Item>
-            <Menu.Item key="setting:2">Option 2</Menu.Item>
-          </MenuItemGroup>
-          <MenuItemGroup title="Item 2">
-            <Menu.Item key="setting:3">Option 3</Menu.Item>
-            <Menu.Item key="setting:4">Option 4</Menu.Item>
-          </MenuItemGroup>
-        </SubMenu>
-        <Menu.Item key="alipay">
-          <a href="https://ant.design" target="_blank" rel="noopener noreferrer">Navigation Four - Link</a>
-        </Menu.Item>
+    const { child, arg } = this.props;
+    const { current } = this.state;
+
+    const menu = (
+      <Menu className='note-drop'>
+        {child && child.map(item => (
+          <Menu.Item key={item.arg}><Link to={`/submenu/${item.arg}`}>{item.name}</Link></Menu.Item>
+        ))}
       </Menu>
+    )
+    return (
+      <div className='global-head'>
+        <Menu
+          // onClick={this.handleClick}
+          selectedKeys={[current]}
+          mode="horizontal"
+        >
+        {[
+          <Menu.Item key="home">
+            <ActiveLink to='/home' current={current} activeOnlyWhenExact={true} onSelect={() => this.onSelectMenu('home')}>
+              首页
+            </ActiveLink>
+          </Menu.Item>,
+          <Menu.Item key="categories">
+            <ActiveLink to='/categories' current={current} onSelect={() => this.onSelectMenu('categories')}>
+              笔记分类
+            </ActiveLink>
+          </Menu.Item>,
+          <Menu.Item key="calendar">
+            <ActiveLink to='/calendar' current={current} onSelect={() => this.onSelectMenu('calendar')}>
+              日程
+            </ActiveLink>
+          </Menu.Item>
+        ]}
+          
+        </Menu>
+      </div>
     );
   }
 }
