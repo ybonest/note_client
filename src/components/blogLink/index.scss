@@ -1,0 +1,42 @@
+.bloglink {
+  :global {
+    .ant-card {
+      background-color: transparent;
+      border-radius: 4px;
+    }
+    .ant-card-head {
+      background-color: transparent;
+    }
+    .ant-card-body {
+      padding: 12px;
+    }
+  }
+  .table {
+    tbody {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      padding: 5px 0px;
+    }
+    background-color: transparent;
+    tr {
+      background-color: transparent!important;
+      border: none;
+      display: flex;
+      justify-content: space-between;
+      flex: 1;
+    }
+    td {
+      padding: 0px;
+      // text-align: center;
+      flex: 1;
+      border: none;
+      p {
+        text-align: center;
+      }
+    }
+  }
+}
+.bloglinkmodal {
+  width: 450px!important;
+}

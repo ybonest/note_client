@@ -9,7 +9,8 @@ const server = new WebpackDevServer(compiler, {
   proxy: {
     "/api": "http://localhost:3000",
     "/note": "http://localhost:3000",
-    "/images": "http://localhost:3000"
+    "/images": "http://localhost:3000",
+    "/files": "http://localhost:3000"
   },
   publicPath: '/'
 });

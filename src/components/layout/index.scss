@@ -24,3 +24,30 @@
     width: 300px;
   }
 }
+@media screen and (min-width: 960px){
+  .page-left {
+    min-width: 710px;
+  }
+}
+@media screen and (max-width: 960px){
+  .page-right {
+    display: none;
+  }
+  .page-layout {
+    margin: 0;
+  }
+  .calendar {
+    margin: 0 50px;
+  }
+}
+@media only screen and (max-width : 480px) {
+  .img-style {
+    width: 100%;
+  }
+  .page-left {
+    width: 90%;
+  }
+  .ant-list {
+    margin: 0 15px;
+  }
+}

@@ -13,6 +13,7 @@ import Categories from 'components/categories';
 import PageRight from 'components/page-right';
 import CalendarDay from 'components/calendar';
 import './index.scss';
+import { findDOMNode } from 'react-dom';
 
 class LayoutComponent extends React.Component {
   constructor(){
@@ -39,6 +40,10 @@ class LayoutComponent extends React.Component {
         sideBarData: response.data
       })
     })
+    console.log(findDOMNode(this.node))
+    console.log(this.node);
+    console.dir(this.e);
+    
   }
   render(){
     let child = null, arg = null;
@@ -51,7 +56,8 @@ class LayoutComponent extends React.Component {
       <Router>
       <Layout style={{ minHeight: '100vh' }}>
         <div>
-          <GlobalHeader child={child} arg={arg}/>
+        <div ref={e=>this.e=e}>123</div>
+          <GlobalHeader ref={node => this.node = node} child={child} arg={arg}/>
           {/*<SideBar child={child} arg={arg}/>*/}
               <Route path='/categories/:type' render={props => (
                 <SubMenuCom {...props}  child={child} arg={arg} />

@@ -9,4 +9,9 @@
 }
 .img-style {
   border-radius: 5px;
+  width: 272px;
+}
+:global(.ant-upload.ant-upload-select-picture-card){
+  width: 272px;
+  height: 154px;
 }

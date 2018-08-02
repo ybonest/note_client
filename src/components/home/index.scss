@@ -1,0 +1,25 @@
+.ant-carousel .slick-slide {
+  text-align: center;
+  height: 270px;
+  line-height: 270px;
+  background: #364d79;
+  overflow: hidden;
+}
+
+.ant-carousel .slick-slide h3 {
+  color: #fff;
+}
+
+.home-page {
+  padding: 0 20px;
+  :global {
+    .ant-list {
+      margin: 0;
+    }
+    .ant-list-item-extra {
+      width: 272px;
+      height: 218px;
+      overflow: hidden;
+    }
+  }
+}
